@@ -32,6 +32,10 @@ function onCloseBtnClick() {
   refs.lightbox.classList.toggle("is-open");
   refs.lightboxImage.src = "";
   refs.lightboxImage.alt = "";
+
+  window.removeEventListener("keydown", ifEscapeKeyDown);
+  window.removeEventListener("keydown", ifRightKeyDown);
+  window.removeEventListener("keydown", ifLeftKeyDown);
 }
 
 function onOverlayBtnClick() {
@@ -54,7 +58,13 @@ function ifRightKeyDown(e) {
     for (let i = 0; i < urls.length; i += 1) {
       if (urls[i] === refs.lightboxImage.src && i !== urls.length - 1) {
         refs.lightboxImage.src = urls[i + 1];
-        console.log(i);
+        break;
+      }
+    }
+    const alts = images.map((image) => image.description);
+    for (let i = 0; i < alts.length; i += 1) {
+      if (alts[i] === refs.lightboxImage.alt && i !== alts.length - 1) {
+        refs.lightboxImage.alt = alts[i + 1];
         break;
       }
     }
@@ -67,7 +77,13 @@ function ifLeftKeyDown(e) {
     for (let i = 0; i < urls.length; i += 1) {
       if (urls[i] === refs.lightboxImage.src && i !== 0) {
         refs.lightboxImage.src = urls[i - 1];
-        console.log(i);
+        break;
+      }
+    }
+    const alts = images.map((image) => image.description);
+    for (let i = 0; i < alts.length; i += 1) {
+      if (alts[i] === refs.lightboxImage.alt && i !== 0) {
+        refs.lightboxImage.alt = alts[i - 1];
         break;
       }
     }

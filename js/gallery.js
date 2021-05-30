@@ -52,7 +52,7 @@ function ifRightKeyDown(e) {
   if (e.code === "ArrowRight") {
     const urls = images.map((image) => image.original);
     for (let i = 0; i < urls.length; i += 1) {
-      if (urls[i] === refs.lightboxImage.src && i !== 8) {
+      if (urls[i] === refs.lightboxImage.src && i !== urls.length - 1) {
         refs.lightboxImage.src = urls[i + 1];
         console.log(i);
         break;

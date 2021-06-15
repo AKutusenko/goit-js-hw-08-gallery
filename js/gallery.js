@@ -10,7 +10,7 @@ const refs = {
 
 refs.gallery.addEventListener("click", onGalleryClick);
 refs.closeBtn.addEventListener("click", onCloseBtnClick);
-refs.overlay.addEventListener("click", onOverlayBtnClick);
+refs.overlay.addEventListener("click", onCloseBtnClick);
 
 createGallery(images);
 
@@ -38,18 +38,8 @@ function onCloseBtnClick() {
   window.removeEventListener("keydown", ifLeftKeyDown);
 }
 
-function onOverlayBtnClick() {
-  refs.lightbox.classList.toggle("is-open");
-  refs.lightboxImage.src = "";
-  refs.lightboxImage.alt = "";
-}
-
 function ifEscapeKeyDown(e) {
-  if (e.code === "Escape") {
-    refs.lightbox.classList.toggle("is-open");
-    refs.lightboxImage.src = "";
-    refs.lightboxImage.alt = "";
-  }
+  if (e.code === "Escape") onCloseBtnClick();
 }
 
 function ifRightKeyDown(e) {
